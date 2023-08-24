@@ -95,3 +95,4 @@
                       </div>
                       </div>
 <script type="module" src="<?=asset("/JS/categorie/script.js") ?>" ></script>
+<script type="module" src="<?=AssetJs("/JS/categorie/script.js") ?>" ></script>  

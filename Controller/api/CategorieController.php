@@ -1,31 +1,44 @@
 <?php
  namespace Mouro\Controller\Api;
+use Mouro\Models\Unite;
 use Mouro\Core\Validator;
 use Mouro\Core\Controller;
 use Mouro\Models\Categorie;
+use Mouro\Models\UniteCategorie;
 class CategorieController extends Controller{
   
            public function create(){
-            ob_start();
-            require("../ressources/Views/CategorieConfection/lister.js.html.php");
-              $recuperateurVue = ob_get_clean();
-            require("../ressources/Views/base.layout.html.php");
+            // ob_start();
+            // require("../ressources/Views/CategorieConfection/lister.js.html.php");
+            //   $recuperateurVue = ob_get_clean();
+            // require("../ressources/Views/base.layout.html.php");
            }
-           public function store(){
-            Validator::isVide($_POST['libelle'],"libelle");
-            if(Validator::validate()){
+           public function store()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
 
-              try {
-                Categorie::create([
-                  "libelle" => $_POST['libelle']
-                 ]);
-              } catch (\PDOException $th) {
-                Validator::$errors["libelle"] = "cette categorie existe deja dans la base de donnés";
-              }
-               
+        Validator::isVide($data["libelle1"], "libelle");
+        Validator::isVide($data["unitedefaut"], "libelleU");
+        if (Validator::validate()) {
+
+            try {
+                $categorie = Categorie::create([
+                    "libelle" => $data["libelle1"]
+                ]);
+                $unite = Unite::create([
+                    "libelleU" => $data["unitedefaut"],
+                    "conversion" => $data["conversion"]
+                ]);
+                UniteCategorie::create([
+                  "idUnite" => $unite->id,
+                  'idCategorie' => $categorie->id
+                ]);
+            } catch (\PDOException $th) {
+                Validator::$errors['libelle'] = "le libelle existe deja";
+                // die($th->getMessage());
             }
-                   $this->redirect("categorie");
-           }
+        }
+    }
            public function index(){   
                  
                   $this->JsonEncode(Categorie::all()) ;
@@ -63,5 +76,6 @@ class CategorieController extends Controller{
               //        $this->redirect("categorie");
            }
 }
+?>
 
 

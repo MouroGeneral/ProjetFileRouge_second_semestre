@@ -134,7 +134,6 @@ Router::route("/confectionvente-store",[ ConfectionVenteController::class,'store
 Router::route("/vente-list",[ VenteController::class,'index']);
 Router::route("/vente-add",[ VenteController::class,'create']);
 Router::route("/confectionvente-add-select",[ ConfectionVenteController::class,'getArticleConfection']);
-Router::route("/categorie-add-select",[ ArticleConfectionController::class,'getCategorieConfection']);
 Router::route("/unite-add-select",[ ArticleConfectionController::class,'getUnite']);
 Router::route("/saisir-fournisseur",[ ArticleConfectionController::class,'getFourniseur']);
 
