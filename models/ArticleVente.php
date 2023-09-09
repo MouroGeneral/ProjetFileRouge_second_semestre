@@ -3,15 +3,15 @@ namespace Mouro\Models;
 use Mouro\Core\Model;
 use Mouro\Models\CategorieVente;
 class ArticleVente extends Model{
-    private  $id;
-    private  $libelle;
-    private  $prixVente;
-    private  $quantiteVente;
-    private  $montant;
-    private  $photo;
-    private  $IdCategorieVente;
+    public  $id;
+    public  $libelle;
+    public $prixVente;
+    public  $quantiteVente;
+    public $montant;
+    public  $photo;
+    public  $IdCategorieVente;
       //Navigation 
-    private  $categorie_vente;
+      public  $categorie_vente;
 
     public function __construct(){  
         $this->categorie_vente = new CategorieVente();
@@ -21,6 +21,9 @@ class ArticleVente extends Model{
     public function getCategorieVente(){
        return  $this->categorie_vente->find($this->IdCategorieVente);
     }
+    public static function findDetailByArticle(int $idArticleVente){
+        return parent::query("select * from ".  self::tableName() ." where id=:id  ",["id"=>$idArticleVente]);
+     }
 
  
     protected static function tableName(){

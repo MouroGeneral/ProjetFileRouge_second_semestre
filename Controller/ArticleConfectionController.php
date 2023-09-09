@@ -74,5 +74,9 @@ class ArticleConfectionController extends Controller{
         $datas=Fournisseur::all();
          $this->JsonEncode($datas);
     }
+    public function getArticle(){
+      $datas=ArticleConfection::all();
+       $this->JsonEncode($datas);
+  }
          
  }

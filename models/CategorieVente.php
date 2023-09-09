@@ -2,12 +2,15 @@
 namespace Mouro\Models;
 use Mouro\Core\Model;
 class CategorieVente extends Model{
-    private  $id;
-    private  $libelle;
+    public  $id;
+    public  $libelle;
     protected static function tableName(){
         return 'categorie_vente';
     }
-    public function getId(){
+    public static function  findDetailByCategorieVente(int $idCategorieVente){
+        return parent::query("select * from ".  self::tableName() ." where idT=:idT  ",["idT"=>$idCategorieVente]);
+     }
+       public function getId(){
         return $this->id;
     }
     public function setId($id){

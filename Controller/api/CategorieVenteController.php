@@ -1,23 +1,12 @@
 <?php
  namespace Mouro\Controller\Api;
-use Mouro\Models\Unite;
 use Mouro\Core\Validator;
 use Mouro\Core\Controller;          
-use Mouro\Models\Categorie;
-use Mouro\Models\UniteCategorie;
-class CategorieController extends Controller{
-    public function getUnite()
-    {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $data;
-        $_SESSION['id'] = $data['idCategorie'];
-        // $this->JsonEncode(UniteCategorie::findDetailByAppro(20));
-    }
+use Mouro\Models\CategorieVente;
+class CategorieVenteController extends Controller{
 
-    public function getUniteCategorie()
-    {
-        $this->JsonEncode(UniteCategorie::findDetailByCategorie($_SESSION['id']));
-    }
+
+  
            public function create(){
            
             // ob_start();
@@ -30,23 +19,14 @@ class CategorieController extends Controller{
         $data = json_decode(file_get_contents('php://input'), true);
 
         Validator::isVide($data["libelle1"], "libelle");
-        Validator::isVide($data["unitedefaut"], "libelleU");
         if (Validator::validate()) {
 
             try {
-                $categorie = Categorie::create([
+                CategorieVente::create([
                     "libelle" => $data["libelle1"]
                 ]);
-                $unite = Unite::create([
-                    "libelleU" => $data["unitedefaut"],
-                    "conversion" => $data["conversion"]
-                ]);
-                UniteCategorie::create([
-                    'idCategorie' => $categorie->id,
-                    "idUnite" => $unite->id,
-                    "libelle" => $data["unitedefaut"],
-                ]);
-
+             
+             
              
             } catch (\PDOException $th) {
                 Validator::$errors['libelle'] = "le libelle existe deja";
@@ -56,13 +36,17 @@ class CategorieController extends Controller{
     }
            public function index(){   
           
-                  $this->JsonEncode(Categorie::all()) ;
+                  $this->JsonEncode(CategorieVente::all()) ;
               
+           }
+           public function getCategorieVente()
+           {
+               $this->JsonEncode(CategorieVente::findDetailByCategorieVente($_SESSION['id']));
            }
 
            public function delete(){ 
-                Categorie::deleted($_POST['id']);
-                 $this->redirect("categorie");
+                CategorieVente::deleted($_POST['id']);
+                 $this->redirect("categorie_vente");
            }
 
            public function indexUpdate(){

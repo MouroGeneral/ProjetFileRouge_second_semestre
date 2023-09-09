@@ -13,6 +13,7 @@ class CategorieController extends Controller{
             require("../ressources/Views/base.layout.html.php");
            }
            public function store(){
+           
             Validator::isVide($_POST['libelle'],"libelle");
             if(Validator::validate()){
 

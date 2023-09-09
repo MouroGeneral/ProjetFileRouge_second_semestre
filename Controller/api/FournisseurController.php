@@ -13,6 +13,7 @@ class FournisseurController extends Controller{
             require("../ressources/Views/base.layout.html.php");
            }
            public function store(){
+       
             $data = json_decode(file_get_contents('php://input'),true);
             Validator::isVide(['nomF'],"nomF");
             Validator::isVide(['prenomF'],"prenomF");
@@ -31,7 +32,7 @@ class FournisseurController extends Controller{
                    $this->redirect("fournisseur");
            }
            public function index(){   
-                 
+                
                   $this->JsonEncode(Fournisseur::all()) ;
               
            }

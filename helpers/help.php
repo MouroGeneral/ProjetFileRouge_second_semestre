@@ -46,4 +46,9 @@ function AssetJs(string $view)
 {
     echo WEB_ROUTE . "JS/$view";
 }
+function AssetImage(string $view)
+{
+    echo WEB_ROUTE . "IMAGE/$view";
+}
+
 

@@ -1,7 +1,10 @@
 <?php 
 namespace Mouro\Controller;
-use Mouro\Models\ArticleVente;
+use Mouro\Models\Taille;
 use Mouro\Core\Controller;
+use Mouro\Models\ArticleVente;
+use Mouro\Models\CategorieVente;
+
 class ArticleVenteController extends Controller{
     public function create(){
       
@@ -15,6 +18,19 @@ class ArticleVenteController extends Controller{
     public function store(){
   
     }
+
+    public function getTaille(){
+      $datas=Taille::all();
+       $this->JsonEncode($datas);
+    }
+    public function getCategorieVente(){
+      $datas=CategorieVente::all();
+       $this->JsonEncode($datas);
+    }
+    public function getArticleVente(){
+      $datas=ArticleVente::all();
+       $this->JsonEncode($datas);
+  }
     public  function index(){
       $data = ArticleVente::all();
       $page=1;

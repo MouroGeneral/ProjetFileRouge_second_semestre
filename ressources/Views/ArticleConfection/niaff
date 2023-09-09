@@ -1,3 +1,130 @@
+    filter()  
+    include()
+    map()  
+    join()  
+
+  <!-- 
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ajouter un Fournisseur</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Your form for adding supplier information goes here -->
+              <form id="addSupplierForm">
+                <div class="mb-3">
+                  <label for="supplierName" class="form-label">Prenom</label>
+                  <input type="text" class="form-control" id="supplierFistName" name="supplierFistName">
+              
+              
+                  <label for="supplierName" class="form-label">Nom</label>
+                  <input type="text" class="form-control" id="supplierName" name="supplierName">
+                </div>
+                <!-- Add more input fields for supplier details if needed -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+              <button type="button" class="btn btn-primary" id="saveSupplierButton">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+    /* $categorieController = new CategorieController;
+$categorieVenteController = new CategorieVenteController;
+$articleConfectionController = new ArticleConfectionController;
+$articleVente = new ArticleVenteController;
+$approvisionnement = new ApprovisionnementController;
+$detailapprovisionnement = new DetailApprovisionnementController;
+$production = new ProductionController;
+$productionArticle = new ProductionArticleController;
+$confectionvente  = new ConfectionVenteController;
+$vente = new VenteController;
+
+
+
+if(isset($_REQUEST['path'])){
+        $path = $_REQUEST['path'];
+        if ($path == "categorie") {
+            $categorieController->index();
+        }elseif ($path == "article_confection"){
+            $articleConfectionController->index();  
+        }elseif ($path == "categorie_vente"){
+            $categorieVenteController->index();
+        }elseif ($path == "article_vente"){
+               $articleVente->index();
+        }elseif ($path == "approvisionnement"){
+            $approvisionnement->index();
+       } elseif ($path == "detail_approvisionnement"){
+             $_SESSION['id'] = $_GET['id'];
+             $data = Approvisionnement::find($_SESSION['id']);
+              $_SESSION["data"] = $data ; 
+             $detailapprovisionnement->index();    
+       }elseif ($path == "store-categorie"){
+             $categorieController->store();   
+        }elseif ($path == "add"){
+             $articleConfectionController->create();
+        }elseif ($path == "article-store"){
+            $articleConfectionController->store();
+        }elseif ($path == "filtrer"){
+            $approvisionnement->filtre();
+         }elseif ($path == "update-paiement-appro"){
+            $approvisionnement->updatePaiement();
+         }elseif ($path == "add-approvisionnement"){
+            $approvisionnement->create();
+         }elseif($path == "approvisionnement-store"){   
+            $approvisionnement->store();
+         }elseif($path == "deleting"){
+            $categorieController->delete();
+         }elseif($path == "modification-categorie"){
+            $_SESSION['id'] = $_GET['id'];
+            $categorieController->update();
+         }elseif($path == "modification"){
+            $categorieController->index();
+          }elseif($path == "getdata-store"){
+             $approvisionnement->store();
+          }elseif($path == "deleting-approvisionnement"){
+              $_SESSION['id'] = $_GET['id'];
+              $approvisionnement->delete();
+         }elseif($path == "production-list"){
+              $production->index();
+         }elseif($path == "production-add"){
+            $production->create();
+         }elseif($path == "production-store"){
+            $production->store();
+         }elseif($path == "delete-line"){
+            $production->store();
+         }elseif($path == "production-detail"){
+               $_SESSION['id'] = $_GET['id'];
+               $data = Production::find($_SESSION['id']);
+               $_SESSION['data'] = $data;
+               $productionArticle->index();
+         }elseif($path == "articleVente-add"){
+                   $articleVente->create();
+         }elseif($path == "vente-store"){
+               $articleVente->store();
+         }elseif($path == "articleVente-detail"){
+              $_SESSION['id'] = $_GET['id'];
+             $confectionvente->index();
+          }elseif($path == "production-add-java"){
+                 $production->productionJava();
+          }elseif($path == "vente-list"){
+                $vente->index();
+           }elseif($path == "vente-add"){
+                $vente->create();
+           }elseif($path == "confectionvente-store"){
+                $confectionvente->store();
+           }elseif($path == "confectionvente-add"){
+                $confectionvente->create();
+           }
+       
+         
+} */  
+ <!--   -->  
              <!-- Votre JavaScript -->
 <!-- <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -212,4 +339,59 @@ selectCategorie.addEventListener("click",function(event){
             });
 
       })
+
     </script> */ -->
+    /*  document.addEventListener("DOMContentLoaded", function () {
+      const confectionInput = document.getElementById("ConfectionInput");
+      const prixInput = document.getElementById("validationTooltip02");
+      const quantiteInput = document.getElementById("validationTooltip02"); // Utilisez un ID unique ici
+      const uniteSelect = document.getElementById("uniteSelect");
+      const fournisseurInput = document.getElementById("fournisseur");
+      const valideform = document.getElementById("valide");
+  
+      valideform.addEventListener('click', function (event) {
+        let isValid = true;
+  
+        // Validation pour le champ Confection
+        if (confectionInput.value.trim() === "") {
+          isValid = false;
+          showErrorMessage("Veuillez remplir le champ Articles Confection", confectionInput);
+        }
+  
+        // Validation pour le champ Prix
+        if (prixInput.value === "") {
+          isValid = false;
+          showErrorMessage("Veuillez remplir le champ Prix", prixInput);
+        }
+  
+        // Validation pour le champ Quantité
+        if (quantiteInput.value === "") {
+          isValid = false;
+          showErrorMessage("Veuillez remplir le champ Quantité", quantiteInput);
+        }
+  
+        // Validation pour le champ Unité
+        if (uniteSelect.value === "0") {
+          isValid = false;
+          showErrorMessage("Veuillez choisir une unité", uniteSelect);
+        }
+  
+        // Validation pour le champ Fournisseur
+        if (fournisseurInput.value.trim() === "") {
+          isValid = false;
+          showErrorMessage("Veuillez remplir le champ Fournisseur", fournisseurInput);
+        }
+  
+        // Si la validation a échoué, empêche la soumission du formulaire
+        if (!isValid) {
+          event.preventDefault();
+        }
+      });
+  
+      // Fonction pour afficher un message d'erreur
+      function showErrorMessage(message, inputElement) {
+        const feedbackMessage = inputElement.parentElement.querySelector(".invalid-feedback");
+        feedbackMessage.textContent = message;
+        inputElement.classList.add("is-invalid");
+      }
+    }); */

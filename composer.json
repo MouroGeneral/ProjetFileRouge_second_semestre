@@ -1,16 +1,13 @@
 
     {
-        "name": "edmg/php_poo_mvc_gestion_atelier_221-main",
+        "name": "edmg/ProjetFileRouge_second_semestre",
          "description": "PAV",
         "autoload": {
             "psr-4": {
                 "Mouro\\Core\\": "core/",
                 "Mouro\\Models\\": "models/",
                 "Mouro\\Controller\\": "Controller/",
-                "Mouro\\Api\\Controller\\": "Api/controller/"
-    
-    
-                
+                "Mouro\\Controller\\Api\\": "Controller/api/"
             }
         },
         "require":
