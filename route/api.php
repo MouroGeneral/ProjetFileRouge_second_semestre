@@ -12,6 +12,7 @@ use Mouro\Controller\Api\ArticleConfectionController;
 Router::route("/api/categorie",[CategorieController::class,'index']);
 Router::route("/api/categorievente",[CategorieVenteController::class,'index']);
 Router::route("/api/categorie-store",[CategorieController::class,'store']);
+Router::route("/api/article-vente-store",[ArticleVenteController::class,'store']);
 Router::route("/api/taille-store",[TailleController::class,'store']);
 Router::route("/api/categorie-vente-store",[CategorieVenteController::class,'store']);
 Router::route("/api/fournisseur",[FournisseurController::class,'index']);

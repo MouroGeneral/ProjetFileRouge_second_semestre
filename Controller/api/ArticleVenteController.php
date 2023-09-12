@@ -11,7 +11,26 @@ class ArticleVenteController extends Controller{
     }
     
     public function store(){
-  
+      $data = json_decode(file_get_contents('php://input'), true);
+
+   
+
+          try {
+              ArticleVente::create([
+                  "libelle" => $data["venteInput"],
+                  "taille" => $data["tailleSelect"],
+                  "prixVente" => $data["prixInput"],
+                  "montant" => $data["montantInput"],
+                  "quantiteVente" => $data["ProductionInput"],
+                  "idCategorieVente" => $data["categorieventeSelect"]
+              ]);
+              
+
+           
+          } catch (\PDOException $th) {
+           
+          }
+     
     }
 
     public function getTaille(){

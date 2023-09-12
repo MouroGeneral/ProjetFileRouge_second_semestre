@@ -71,32 +71,34 @@ inputeElement.addEventListener("input", async event => {
         submitArticle.disabled = true; // Disable the submit button
     }
 });
-const libelle1 = document.getElementById("libelle1");
+
+const venteInput = document.getElementById('venteInput');
+const tailleSelect = document.getElementById('tailleSelect');
+const prixInput = document.getElementById('prixInput');
+const montantInput = document.getElementById('montantInput');
+const ProductionInput = document.getElementById('ProductionInput');
+ document.getElementById('valide').addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  const value = venteInput.value;
+  const value1 = tailleSelect.value;
+  const value2 = prixInput.value;
+  const value3 = montantInput.value;
+  const value4 = ProductionInput.value;
+  const value5 = categorieventeSelect.value;
 
 
+  try {
+    // Your API call and form reset logic here
+    await Api.postData(`${WEB_ROUTE}/article-vente-store`, { venteInput: value,tailleSelect:value1,prixInput:value2,montantInput:value3,ProductionInput:value4,categorieventeSelect: value5 });
 
-document.getElementById('submitBtn').addEventListener('click', async (e) => {
-   e.preventDefault();
-
-   const value = libelle1.value;
-
- 
-   try {
-     // Your API call and form reset logic here
-     await Api.postData(`${WEB_ROUTE}/categorie-vente-store`, { libelle1: value});
- 
-     const newOption = document.createElement('option');
-     newOption.value = value;
-     newOption.textContent = value;
-     categorieventeSelect.appendChild(newOption);
-     categorieventeSelect.value = value;
-    
+  
 
 
-   } catch (error) {
-     console.error('An error occurred:', error);
-   }
- });
+  } catch (error) {
+   console.error('An error occurred:', error);
+  }
+});
 
 
 

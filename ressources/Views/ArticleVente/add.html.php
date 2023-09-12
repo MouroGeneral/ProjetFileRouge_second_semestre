@@ -156,7 +156,7 @@ if (Session::isset("errors")) {
 
                 <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Prix de vente</label>
-                    <input type="text" class="form-control" name="prixVente" id="prixInput" value="" disabled>
+                    <input type="text" class="form-control" name="prixVente" id="prixInput" value="" >
                 </div>
 
                 <input type="submit" class="btn btn-primary " style="background:green;height:100%;margin-top:5%;margin-left:4.5%;width:10%" id="valide" name="Valider"  value="valider">
