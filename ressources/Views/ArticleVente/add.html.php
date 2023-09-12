@@ -21,7 +21,7 @@ if (Session::isset("errors")) {
     <div class="card mt-5">
         <div class="card-body bg-white">
             <h4 class="card-title text-center mb-3"> Ajouter des Articles De Ventes </h4>
-            <form class="row g-3" novalidate method="post" action="<?= WEB_ROUTE ?>">
+            <form class="row g-3" novalidate method="post">
                 <input id="qteAppro" type="hidden" name="qteAppro" value="0">
                 <input id="idAppro" type="hidden" name="idAppro" value="0">
                 <div class="col-md-6 position-relative">
@@ -127,7 +127,7 @@ if (Session::isset("errors")) {
               </div>
             </div>
 
-            <input type="submit" class="btn btn-primary " style="background:green;height:100%;margin-top:8%;width:10%;margin-left:4%" id="ok" name="ok"  value="ok">
+            <input type="button" class="btn btn-primary " style="background:green;height:100%;margin-top:8%;width:10%;margin-left:4%" id="addArticle" name="ok"  value="ok">
 
                 <!-- <div class="col-md-4 btn2 position-relative">
                     <button class="btn btn-dark" type="submit" name="valider" style="background-color: green;color:white; " >Valider</button>
@@ -141,7 +141,9 @@ if (Session::isset("errors")) {
                         </tr>
 
                     </thead>
-                  
+                    <tbody id="categoryTableBody">
+              
+                    </tbody>
                 </table>
                 <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Cout de production</label>
@@ -157,6 +159,7 @@ if (Session::isset("errors")) {
                     <input type="text" class="form-control" name="prixVente" id="prixInput" value="" disabled>
                 </div>
 
+                <input type="submit" class="btn btn-primary " style="background:green;height:100%;margin-top:5%;margin-left:4.5%;width:10%" id="valide" name="Valider"  value="valider">
 
             </form>
         </div>
@@ -167,16 +170,21 @@ if (Session::isset("errors")) {
             <div class="table-responsive">
                 <table class="table table-dark">
                     <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Libelle</th>
-                            <th scope="col">Prix</th>
-                            <th scope="col">Quantite</th>
-                            <th scope="col">Actions</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">LibelleArticle</th>                                       
+                        <th scope="col">Taille</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">quantite</th>
+                        <th scope="col">Montant</th>
+                        <th scope="col">idCategorie</th>
+                        <th scope="col">Action</th>
+                    </tr>
                     </thead>
-                    <tbody id="categoryTableBody">
-                    </tbody>
+                 
+                                    <tbody id="tableau">
+                                  
+                                      </tbody>
+                  
                 </table>
             </div>
         </div>
@@ -185,3 +193,8 @@ if (Session::isset("errors")) {
 </div>
 <script type="module" src="<?=AssetJs("core/taille.js") ?>" ></script>  
 <script type="module" src="<?=AssetJs("core/articleVente.js") ?>" ></script>  
+
+<!-- <script type="module" src="</?=AssetJs("core/article.js") ?>" ></script>  
+<script type="module" src="</?=AssetJs("categorie/script.js") ?>" ></script>  
+<script type="module" src="</?=AssetJs("core/unite.js") ?>" ></script>  
+<script type="module" src="</?=AssetJs("core/fournisseur.js") ?>" ></script> -->

@@ -22,7 +22,7 @@ async function populateSelectWithData() {
 
  async function populateSelectWithData1() {
   try {
-      const response = await fetch("http://localhost:8000/api/article-index"); 
+      const response = await fetch("http://localhost:8000/api/article-ind"); 
       const datas = await response.json();
          tbody.innerHTML = ""
       datas.forEach(data => {
